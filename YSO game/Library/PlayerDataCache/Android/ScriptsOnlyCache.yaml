@@ -1,18 +1,20 @@
 ScriptsOnlyBuild:
   usedScripts:
     Assembly-CSharp.dll:
+    - DestroyAfter
+    - FlowerButton
+    - GameManager
     - HexagonMap
     - MovingFloor
     - SceneChanger
+    - ScoreManager
     Unity.Rider.Editor.dll:
     - Packages.Rider.Editor.UnitTesting.CallbackData
     UnityEditor.Graphs.dll:
     - UnityEditor.Graphs.AnimationBlendTree.Graph
     - UnityEditor.Graphs.AnimationBlendTree.GraphGUI
-    - UnityEditor.Graphs.AnimationStateMachine.AnyStateNode
     - UnityEditor.Graphs.AnimationStateMachine.Graph
     - UnityEditor.Graphs.AnimationStateMachine.GraphGUI
-    - UnityEditor.Graphs.AnimationStateMachine.StateNode
     - UnityEditor.Graphs.AnimatorControllerTool
     UnityEditor.TestRunner.dll:
     - UnityEditor.TestTools.TestRunner.Api.CallbacksHolder
@@ -20,11 +22,13 @@ ScriptsOnlyBuild:
     - UnityEditor.TestTools.TestRunner.TestRun.TestJobDataHolder
     UnityEngine.UI.dll:
     - UnityEngine.EventSystems.EventSystem
+    - UnityEngine.EventSystems.EventTrigger
     - UnityEngine.EventSystems.StandaloneInputModule
     - UnityEngine.UI.Button
     - UnityEngine.UI.CanvasScaler
     - UnityEngine.UI.GraphicRaycaster
     - UnityEngine.UI.Image
+    - UnityEngine.UI.Mask
     - UnityEngine.UI.RawImage
     - UnityEngine.UI.Text
   sceneClasses:
@@ -60,26 +64,52 @@ ScriptsOnlyBuild:
     - Class: 108
       Script: {instanceID: 0}
     - Class: 114
-      Script: {instanceID: 11248}
+      Script: {instanceID: 11230}
     - Class: 114
-      Script: {instanceID: 11834}
+      Script: {instanceID: 11232}
     - Class: 114
-      Script: {instanceID: 12240}
+      Script: {instanceID: 11408}
     - Class: 114
-      Script: {instanceID: 12392}
+      Script: {instanceID: 11448}
     - Class: 114
-      Script: {instanceID: 12700}
+      Script: {instanceID: 11546}
     - Class: 114
-      Script: {instanceID: 13050}
+      Script: {instanceID: 11748}
     - Class: 114
-      Script: {instanceID: 13416}
+      Script: {instanceID: 11828}
     - Class: 114
-      Script: {instanceID: 39968}
+      Script: {instanceID: 11842}
+    - Class: 114
+      Script: {instanceID: 12192}
+    - Class: 114
+      Script: {instanceID: 12250}
+    - Class: 114
+      Script: {instanceID: 12354}
+    - Class: 114
+      Script: {instanceID: 12404}
+    - Class: 114
+      Script: {instanceID: 12690}
+    - Class: 114
+      Script: {instanceID: 12714}
+    - Class: 114
+      Script: {instanceID: 13026}
+    - Class: 114
+      Script: {instanceID: 13064}
+    - Class: 114
+      Script: {instanceID: 31402}
     - Class: 115
+      Script: {instanceID: 0}
+    - Class: 128
       Script: {instanceID: 0}
     - Class: 157
       Script: {instanceID: 0}
     - Class: 196
+      Script: {instanceID: 0}
+    - Class: 198
+      Script: {instanceID: 0}
+    - Class: 199
+      Script: {instanceID: 0}
+    - Class: 213
       Script: {instanceID: 0}
     - Class: 222
       Script: {instanceID: 0}
@@ -119,23 +149,27 @@ ScriptsOnlyBuild:
     - Class: 108
       Script: {instanceID: 0}
     - Class: 114
-      Script: {instanceID: 11248}
+      Script: {instanceID: 11230}
     - Class: 114
-      Script: {instanceID: 11406}
+      Script: {instanceID: 11232}
     - Class: 114
-      Script: {instanceID: 11446}
+      Script: {instanceID: 11408}
     - Class: 114
-      Script: {instanceID: 12218}
+      Script: {instanceID: 11448}
     - Class: 114
-      Script: {instanceID: 12240}
+      Script: {instanceID: 11842}
     - Class: 114
-      Script: {instanceID: 12392}
+      Script: {instanceID: 12250}
     - Class: 114
-      Script: {instanceID: 12700}
+      Script: {instanceID: 12354}
     - Class: 114
-      Script: {instanceID: 13416}
+      Script: {instanceID: 12404}
     - Class: 114
-      Script: {instanceID: 42860}
+      Script: {instanceID: 12690}
+    - Class: 114
+      Script: {instanceID: 12714}
+    - Class: 114
+      Script: {instanceID: 13064}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -159,6 +193,12 @@ ScriptsOnlyBuild:
     assemblyName: UnityEngine.UI.dll
     namespaceName: UnityEngine.UI
     className: CanvasScaler
+  - hash:
+      serializedVersion: 2
+      Hash: 5f1752ed2092162f016c19510c28a8b9
+    assemblyName: UnityEngine.UI.dll
+    namespaceName: UnityEngine.UI
+    className: Button
   - hash:
       serializedVersion: 2
       Hash: c42672c997f8be6b1aa86a927ebea785
@@ -251,6 +291,12 @@ ScriptsOnlyBuild:
     className: GridLayoutGroup
   - hash:
       serializedVersion: 2
+      Hash: 35a9e8172dfe7565d30049bb0a0ed649
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: FlowerButton
+  - hash:
+      serializedVersion: 2
       Hash: 8aa3d6ccbcb54ee8db6c1229854adaaa
     assemblyName: UnityEngine.UI.dll
     namespaceName: UnityEngine.UI
@@ -317,6 +363,18 @@ ScriptsOnlyBuild:
     className: Shadow
   - hash:
       serializedVersion: 2
+      Hash: eccacc4fd1916c92b5cd5fcee820d8e8
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: SimpleTextureDrawing
+  - hash:
+      serializedVersion: 2
+      Hash: e374162cc9a1d207235693405b4b9b4f
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: ScoreManager
+  - hash:
+      serializedVersion: 2
       Hash: 5f170942ee57c7a568f5bcfc7521adea
     assemblyName: UnityEngine.TestRunner.dll
     namespaceName: UnityEngine.TestTools
@@ -377,16 +435,16 @@ ScriptsOnlyBuild:
     className: RemoteTestResultSender
   - hash:
       serializedVersion: 2
+      Hash: 0c380e81fa0e98eddb74b616744fc25a
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: GameManager
+  - hash:
+      serializedVersion: 2
       Hash: 4fd8bf02e3089425d3502e26c44ba31a
     assemblyName: Unity.TextMeshPro.dll
     namespaceName: TMPro
     className: TextContainer
-  - hash:
-      serializedVersion: 2
-      Hash: 5f1752ed2092162f016c19510c28a8b9
-    assemblyName: UnityEngine.UI.dll
-    namespaceName: UnityEngine.UI
-    className: Button
   - hash:
       serializedVersion: 2
       Hash: f84d945e5e1ca985698660fc26e9657f
@@ -401,7 +459,13 @@ ScriptsOnlyBuild:
     className: VerticalLayoutGroup
   - hash:
       serializedVersion: 2
-      Hash: 3f2ee10eaee5cead2c39f14559327b3b
+      Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: SceneChanger
+  - hash:
+      serializedVersion: 2
+      Hash: 5043d5cbb019cb326befba09a7db93e2
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: HexagonMap
@@ -459,6 +523,12 @@ ScriptsOnlyBuild:
     assemblyName: Unity.TextMeshPro.dll
     namespaceName: TMPro
     className: TextMeshProUGUI
+  - hash:
+      serializedVersion: 2
+      Hash: ffdb864e19c30c56bf2e2f2e8fc4a7b5
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: MovingFloor
   - hash:
       serializedVersion: 2
       Hash: f336e086360abe49a3323e5f1583c35a
@@ -587,24 +657,12 @@ ScriptsOnlyBuild:
     className: PlayableTrack
   - hash:
       serializedVersion: 2
-      Hash: b8e13475f3c3d9703b2856e498784a0d
+      Hash: 7c27b0b90693a15331802d0766b8b9fe
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
-    className: MovingFloor
-  - hash:
-      serializedVersion: 2
-      Hash: eccacc4fd1916c92b5cd5fcee820d8e8
-    assemblyName: Assembly-CSharp.dll
-    namespaceName: 
-    className: SimpleTextureDrawing
-  - hash:
-      serializedVersion: 2
-      Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
-    assemblyName: Assembly-CSharp.dll
-    namespaceName: 
-    className: SceneChanger
+    className: DestroyAfter
   platform: 13
   scenePathNames:
   - Assets/Scenes/MainMenu.unity
   - Assets/Scenes/Level.unity
-  playerPath: C:/Users/Max/Documents/Files/Work/UnityProjects/YSO game/Builds
+  playerPath: C:/Users/Max/Documents/Files/Work/UnityProjects/PickyPicker---APP/Builds/PickyPicker.apk

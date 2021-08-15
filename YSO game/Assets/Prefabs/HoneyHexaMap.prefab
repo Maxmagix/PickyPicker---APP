@@ -43,6 +43,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d2d17fd9181f8774cb9deffff6510225, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  spawned: 0
   type: 1
   prefabHexagon: {fileID: 7520522973176548845, guid: db6f7d238fb5b1e49bd47f249d936087,
     type: 3}

@@ -63,19 +63,19 @@ public class ScoreManager : MonoBehaviour
             queenReaction.sprite = queenFaces[0];
             frameImage.sprite = frameSkins[0];
         }
-        //GOOD
-        else if (correctFlowers + (spawnedFlowers / 3) >= spawnedFlowers)
-        {
-            commentText.text = textsReact[1];
-            queenReaction.sprite = queenFaces[0];
-            frameImage.sprite = frameSkins[1];
-        }
         //BAD
-        else if (incorrectFlowers > correctFlowers)
+        else if (1 + incorrectFlowers > correctFlowers * 2)
         {
             commentText.text = textsReact[3];
             queenReaction.sprite = queenFaces[2];
             frameImage.sprite = frameSkins[3];
+        }
+        //GOOD
+        else if ((correctFlowers + spawnedFlowers) - incorrectFlowers >= spawnedFlowers)
+        {
+            commentText.text = textsReact[1];
+            queenReaction.sprite = queenFaces[0];
+            frameImage.sprite = frameSkins[1];
         }
         //OK
         else

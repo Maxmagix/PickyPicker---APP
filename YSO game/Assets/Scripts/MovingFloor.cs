@@ -22,14 +22,24 @@ public class MovingFloor : MonoBehaviour
 
     private bool started = false;
 
-    private bool init = true;
-    private bool first = true;
-
     public void setPaused(bool state)
     {
         started = !state;
     }
 
+    public void clear()
+    {
+        started = false;
+        internPos = 0;
+        totalDistance = 0;
+        foreach (GameObject tile in tiles)
+        {
+            Destroy(tile.gameObject);
+        }
+        tiles.Clear();
+    }
+
+    //Spawn the number of tiles that should be displayed
     public void spawnInitialTiles()
     {
         direction = (speed > 0 ? 1 : -1);
@@ -44,17 +54,16 @@ public class MovingFloor : MonoBehaviour
         started = true;
     }
 
-    void setToZero(int which)
+    //Move the tiles or one of the tiles to zero to reset it's relative position
+    void setToZero()
     {
-        if (which == -1)
+        foreach (GameObject tile in tiles)
         {
-            foreach (GameObject tile in tiles)
+            if (!tile.transform.GetComponent<HexagonMap>().moved)
             {
                 tile.transform.position = Vector3.zero;
+                tile.transform.GetComponent<HexagonMap>().moved = true;
             }
-        } else
-        {
-            tiles.ToArray()[which].transform.position = Vector3.zero;
         }
     }
 
@@ -63,33 +72,22 @@ public class MovingFloor : MonoBehaviour
         if (auto)
         {
             spawnInitialTiles();
-            started = true;
         }
     }
 
     void Update()
     {
-
-        if (init && first)
-        {
-            init = false;
-            first = false;
-            setToZero(-1);
-        }
-        if (init)
-        {
-            init = false;
-            setToZero(numberOfTiles - 1);
-        }
+        float timeD = Time.deltaTime * speed;
         if (!started)
             return;
-        float timeD = Time.deltaTime * speed;
         internPos += timeD;
         totalDistance += timeD;
+        //move all the tiles
         foreach (GameObject tile in tiles)
         {
             tile.transform.position += new Vector3(0, 0, timeD);
         }
+        //delete last tile and spawn a new
         if (internPos > tileSize)
         {
             internPos = 0;
@@ -98,7 +96,6 @@ public class MovingFloor : MonoBehaviour
             GameObject tile = Instantiate(prefabTile, gameObject.transform, true);
             tile.transform.position = new Vector3(0, 0, tileSize * (numberOfTiles - 1) * direction);
             tiles.Add(tile);
-            init = true;
         }
     }
 }

@@ -62,6 +62,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\DestroyAfter.cs" />
     <Compile Include="Assets\FlowerButton.cs" />
     <Compile Include="Assets\Grass And Flowers Pack 1\Example Scene\SimpleTextureDrawing.cs" />
     <Compile Include="Assets\ScoreManager.cs" />

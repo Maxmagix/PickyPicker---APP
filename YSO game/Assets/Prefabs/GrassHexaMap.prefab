@@ -43,10 +43,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d2d17fd9181f8774cb9deffff6510225, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  spawned: 0
   type: 0
   prefabHexagon: {fileID: 4134874652308957868, guid: 46c45fbacc5c51f49b269e4583b60689,
     type: 3}
   prefabHoney: {fileID: 1225519585017535313, guid: dae60775c36350749ad7b9a58672cde1,
     type: 3}
-  mapSize: {x: 15, y: 15}
+  mapSize: {x: 15, y: 20}
   heightVariation: {x: 1, y: 30}

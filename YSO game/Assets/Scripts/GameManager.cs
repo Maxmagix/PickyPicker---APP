@@ -22,7 +22,9 @@ public class GameManager : MonoBehaviour
     [SerializeField]
     private Text displayedText;
     public int selectedFlower;
-    private List<FileInfo> fileList;
+    [SerializeField]
+    private List<Texture2D> flowerList;
+    private List<Sprite> fileList;
     [SerializeField]
     private GameObject flowerPrefab;
     [SerializeField]
@@ -50,7 +52,7 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        LoadFlowers();
+        //LoadFlowers();
         ChooseFlower();
         movingFloor = gameObject.transform.GetComponent<MovingFloor>();
         movingFloor.spawnInitialTiles();
@@ -71,13 +73,22 @@ public class GameManager : MonoBehaviour
         durationDistance = chosenDist;
     }
 
-    void LoadFlowers()
+    /*void LoadFlowers()
     {
-        var info = new DirectoryInfo(Application.dataPath + flowerFolder);
+        var path = Application.dataPath + flowerFolder;
+        #if UNITY_ANDROID && !UNITY_EDITOR
+             path = Path.Combine ("jar:file://" + Application.dataPath + "!assets", flowerFolder);
+        #elif UNITY_IOS && !UNITY_EDITOR
+            path = Application.dataPath + "/Raw";
+        #endif
+        var info = new DirectoryInfo(path);
         var fileArray = info.GetFiles();
         fileList = new List<FileInfo>(fileArray);
         fileList.RemoveAll(r => r.ToString().EndsWith(".meta"));
-    }
+        foreach(var file in fileList) {
+            flowerList.Add(LoadTextureFlower(file.FullName));
+        }
+    }*/
 
     Texture2D LoadTextureFlower(string filePath)
     {
@@ -95,8 +106,8 @@ public class GameManager : MonoBehaviour
 
     void ChooseFlower()
     {
-        selectedFlower = Random.Range(0, fileList.Count);
-        Texture textureFlower = LoadTextureFlower(fileList[selectedFlower].FullName);
+        selectedFlower = Random.Range(0, flowerList.Count);
+        Texture textureFlower = flowerList[selectedFlower];
         flowerImages[0].texture = textureFlower;
         flowerImages[1].texture = textureFlower;
     }
@@ -141,11 +152,11 @@ public class GameManager : MonoBehaviour
                         parentTr.position.x + Random.Range(scatter * -1, scatter),
                         1,
                         parentTr.position.z + Random.Range(scatter * -1, scatter));
-                    int tempFlower = Random.Range(0, fileList.Count);
+                    int tempFlower = Random.Range(0, flowerList.Count);
                     //If the unique flower already spawned I choose another flower
                     while (tempFlower == selectedFlower)
                     {
-                        tempFlower = Random.Range(0, fileList.Count);
+                        tempFlower = Random.Range(0, flowerList.Count);
                     }
                     if (nb == spawnFlowerAt)
                     {
@@ -158,7 +169,7 @@ public class GameManager : MonoBehaviour
                     }
                     GameObject image = flower.transform.GetChild(0).gameObject;
                     image.transform.GetChild(0).GetComponent<FlowerButton>().correct = (tempFlower == selectedFlower);
-                    image.transform.GetComponent<RawImage>().texture = LoadTextureFlower(fileList[tempFlower].FullName);
+                    image.transform.GetComponent<RawImage>().texture = flowerList[tempFlower];
                 }
             }
         }
@@ -184,7 +195,7 @@ public class GameManager : MonoBehaviour
 
     void EndLevel()
     {
-        movingFloor.setPaused(true);
+        movingFloor.clear();
         scoreManager.showResult();
         started = false;
     }
